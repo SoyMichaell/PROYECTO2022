@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Departamento;
+use App\Models\Municipio;
+use App\Models\Rol;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -58,6 +61,18 @@ class RegisterController extends Controller
         ]);
     }
 
+
+    public function showRegistrationForm(){
+
+        $departamentos = Departamento::all();
+        $municipios = Municipio::all();
+        $roles = Rol::all();
+        return view('auth/register')->with('roles', $roles)
+            ->with('departamentos', $departamentos)
+            ->with('municipios', $municipios);
+
+    }
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -79,6 +94,7 @@ class RegisterController extends Controller
             'per_id_departamento' => $data['per_id_departamento'],
             'per_id_municipio' => $data['per_id_municipio'],
             'per_fecha_nacimiento' => $data['per_fecha_nacimiento'],
+            'per_rol' => $data['per_rol'],
         ]);
     }
 }

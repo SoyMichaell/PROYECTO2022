@@ -43,6 +43,16 @@ class FacultadController extends Controller
         $facultades->fac_nombre = $request->get('fac_nombre');
         $facultades->fac_status = $request->get('fac_status');
 
+        $rules = [
+            'fac_nombre' => 'required'
+        ];
+
+        $messages = [
+            'fac_nombre.required' => 'Agregue el nombre de la Facultad'
+        ];
+
+        $this->validate($request, $rules, $messages);
+
         $facultades->save();
         
         Alert::success('Registro Exitoso');

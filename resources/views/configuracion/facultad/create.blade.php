@@ -11,9 +11,7 @@
                     <div class="row mb-3">
                         <label for="fac_nombre" class="col-md-12 col-form-label text-md-right">{{ __('Facultad *') }}</label>
                         <div class="col-md-12">
-                            <input id="fac_nombre" type="text" class="form-control @error('fac_nombre') is-invalid @enderror"
-                                name="fac_nombre" value="{{ old('fac_nombre') }}" required autocomplete="fac_nombre"
-                                autofocus>
+                            <input id="fac_nombre" type="text" class="form-control @error('fac_nombre') is-invalid @enderror" name="fac_nombre" value="{{ old('fac_nombre') }}" autocomplete="fac_nombre">
                             @error('fac_nombre')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

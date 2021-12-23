@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-5">
             <div class="card mt-2">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('Registro persona') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" >
                         @csrf
                         <!--Tipo de documento-->
                         <div class="row mb-3">
@@ -135,7 +135,9 @@
                             <div class="col-md-12">
                                 <select name="per_id_departamento" id="per_id_departamento" class="form-select">
                                     <option selected>---- SELECCIONE ----</option>
-                                    <option value="1">prueba</option>
+                                    @foreach ($departamentos as $departamento)
+                                        <option value="{{$departamento->id}}">{{$departamento->dep_nombre}}</option>
+                                    @endforeach
                                 </select>
                                 @error('per_id_departamento')
                                     <span class="invalid-feedback" role="alert">
@@ -150,7 +152,9 @@
                             <div class="col-md-12">
                                 <select name="per_id_municipio" id="per_id_municipio" class="form-select">
                                     <option selected>---- SELECCIONE ----</option>
-                                    <option value="1">prueba</option>
+                                    @foreach ($municipios as $municipio)
+                                        <option value="{{$municipio->id}}">{{$municipio->mun_nombre}}</option>
+                                    @endforeach
                                 </select>
                                 @error('per_id_municipio')
                                     <span class="invalid-feedback" role="alert">
@@ -164,6 +168,23 @@
                             <label for="per_fecha_nacimiento" class="col-md-4 col-form-label text-md-right">{{ __('Fecha de nacimiento *') }}</label>
                             <div class="col-md-12">
                                 <input id="per_fecha_nacimiento" type="date" class="form-control" name="per_fecha_nacimiento" value="{{ old('per_fecha_nacimiento') }}" required autocomplete="per_fecha_nacimiento">
+                            </div>
+                        </div>
+                        <!--Rol-->
+                        <div class="row mb-3">
+                            <label for="per_rol" class="col-md-12 col-form-label text-md-right">{{ __('Rol *') }}</label>
+                            <div class="col-md-12">
+                                <select name="per_rol" id="per_rol" class="form-select">
+                                    <option selected>---- SELECCIONE ----</option>
+                                    @foreach ($roles as $role)
+                                        <option value="{{$role->id}}">{{$role->rol_nombre}}</option>
+                                    @endforeach
+                                </select>
+                                @error('per_id_municipio')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="row mb-0">

@@ -21,7 +21,7 @@
                     <div class="row mb-3">
                         <label for="mun_nombre" class="col-md-12 col-form-label text-md-right">{{ __('Municipio *') }}</label>
                         <div class="col-md-12">
-                            <input id="mun_nombre" type="text" class="form-control @error('mun_nombre') is-invalid @enderror" name="mun_nombre" value="{{ old('mun_nombre') }}" required autocomplete="mun_nombre" autofocus>
+                            <input id="mun_nombre" type="text" class="form-control @error('mun_nombre') is-invalid @enderror" name="mun_nombre" value="{{ old('mun_nombre') }}" autocomplete="mun_nombre" autofocus>
                             @error('mun_nombre')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

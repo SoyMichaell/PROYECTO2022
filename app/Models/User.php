@@ -29,7 +29,8 @@ class User extends Authenticatable
         'password',
         'per_id_departamento',
         'per_id_municipio',
-        'per_fecha_nacimiento'
+        'per_fecha_nacimiento',
+        'per_rol'
     ];
 
     /**

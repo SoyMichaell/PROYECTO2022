@@ -48,6 +48,16 @@ class MunicipioController extends Controller
         $municipios->mun_nombre = $request->get('mun_nombre');
         $municipios->mun_status = $request->get('mun_status');
 
+        $rules = [
+            'mun_nombre' => 'required'
+        ];
+
+        $messages = [
+            'mun_nombre.required' => 'Agregue el nombre del Municipio'
+        ];
+
+        $this->validate($request, $rules, $messages);
+
         $municipios->save();
         
         Alert::success('Registro Exitoso');

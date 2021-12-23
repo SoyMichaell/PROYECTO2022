@@ -44,6 +44,16 @@ class DepartamentoController extends Controller
         $departamentos->dep_nombre = $request->get('dep_nombre');
         $departamentos->dep_status = $request->get('dep_status');
 
+        $rules = [
+            'dep_nombre' => 'required'
+        ];
+
+        $messages = [
+            'dep_nombre.required' => 'Agregue el nombre del Departamento'
+        ];
+
+        $this->validate($request, $rules, $messages);
+
         $departamentos->save();
 
         Alert::success('Registro Exitoso');

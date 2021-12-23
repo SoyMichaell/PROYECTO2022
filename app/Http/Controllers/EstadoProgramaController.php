@@ -25,6 +25,17 @@ class EstadoProgramaController extends Controller
         $estadoprograma->est_nombre = $request->get('est_nombre');
         $estadoprograma->est_status = $request->get('est_status');
 
+        $rules = [
+            'est_nombre' => 'required',
+            'est_status' => 'required'
+        ];
+
+        $messages = [
+            'est_nombre.required' => 'Agrega el nombre del Estado'
+        ];
+
+        $this->validate($request, $rules, $messages);
+
         $estadoprograma->save();
 
         Alert::success('Registro Exitoso');
